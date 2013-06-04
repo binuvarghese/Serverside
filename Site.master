@@ -1,0 +1,66 @@
+﻿<%@ Master Language="VB" AutoEventWireup="false" CodeFile="Site.master.vb" Inherits="Eatwithme" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <link href="~/Styles/Site.css" rel="stylesheet" type="text/css" />
+    <asp:ContentPlaceHolder ID="HeadContent" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form runat="server">
+    <div class="page">
+        <div class="header">
+            <div class="title">
+                <h1>
+                    Eat With Me
+                </h1>
+            </div>
+            <div class="loginDisplay">
+                <asp:LoginView ID="HeadLoginView" runat="server" EnableViewState="false">
+                    <AnonymousTemplate>
+                        [ <a href="~/Account/Login.aspx" id="HeadLoginStatus" runat="server">Retailers Log In</a>
+                        ]
+                    </AnonymousTemplate>
+                    <LoggedInTemplate>
+                        Welcome <span class="bold">
+                            <asp:LoginName ID="HeadLoginName" runat="server" />
+                        </span>! [
+                        <asp:LoginStatus ID="HeadLoginStatus" runat="server" LogoutAction="Redirect" LogoutText="Log Out"
+                            LogoutPageUrl="~/Thankyou.aspx" />
+                        ]
+                    </LoggedInTemplate>
+                </asp:LoginView>
+            </div>
+            <div class="clear hideSkiplink">
+                <asp:Menu ID="NavigationMenu" runat="server" CssClass="menu" EnableViewState="false"
+                    IncludeStyleBlock="false" Orientation="Horizontal">
+                    <Items>
+                        <asp:MenuItem NavigateUrl="~/index.aspx" text= "Home" />
+                        <asp:MenuItem NavigateUrl="~/todaysdeal.aspx" Text="Today's Deal" />
+                        <asp:MenuItem NavigateUrl="~/bestdeal.aspx" Text="Best Deal">
+                           <asp:MenuItem NavigateUrl="~/Members/deal.aspx" Text="Add Deal" />
+                        </asp:MenuItem>
+                        <asp:MenuItem NavigateUrl="~/Colleges.aspx" Text="Colleges" />
+                        <asp:MenuItem NavigateUrl="~/Review.aspx" Text="Comments">
+                            <asp:MenuItem NavigateUrl="~/addcomments.aspx" Text="Add Comments" />
+                        </asp:MenuItem>
+                        <%--<asp:MenuItem NavigateUrl="~/Members/Profilepage.aspx" Text="Profile Page" />--%>
+                        <asp:MenuItem NavigateUrl="~/Members/Settings.aspx" Text="Settings" />
+                        <asp:MenuItem NavigateUrl="~/contactus.aspx" Text="Contact Us" />
+                    </Items>
+                </asp:Menu>
+            </div>
+        </div>
+        <div class="main">
+            <asp:ContentPlaceHolder ID="MainContent" runat="server" />
+        </div>
+        <div class="clear">
+        </div>
+    </div>
+    <div class="footer">
+    </div>
+    </form>
+</body>
+</html>
